@@ -1,8 +1,7 @@
 # Vagrant Box - Ubuntu-Lamp-Xdebug
 Instead of LAMP, XAMPP, MAMP, etc. set up web server up and running in minutes, plus you are not limited to just one web root folder.
 
-LAMP stack running on Ubuntu using PHP 7 and Xdebug.
-Keeping it lightweight with minimum dependencies installed.
+LAMP stack running on Ubuntu using PHP 7 and Xdebug. Keeping it lightweight with minimum dependencies installed.
 
 #### Stack
 * Ubuntu 14.04 64-bit
@@ -32,7 +31,7 @@ $ vagrant ssh
 
 ### Connecting
 #### Apache
-The Apache server is available on private network IP 192.168.33.10
+The Apache server is available on private network IP 192.168.33.10  
 The web root is synced in the project directory at "www/".
 
 #### MySQL
