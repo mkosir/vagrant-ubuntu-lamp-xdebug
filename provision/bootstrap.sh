@@ -18,7 +18,7 @@ main() {
 
 updateConfig() {
 	###### Download and Install the latest updates for the OS
-	printf "\n\n\n\n[Update all the dependencies]\n\n"
+	printf "\n\n\n\n[ #### Update all the dependencies #### ]\n\n"
     sudo apt-get update && sudo apt-get upgrade
 }
 
