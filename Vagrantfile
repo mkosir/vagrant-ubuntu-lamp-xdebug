@@ -18,16 +18,15 @@ Vagrant.configure("2") do |config|
   # If you use a password, Vagrant will automatically insert a keypair if insert_key is true
   #config.ssh.password = "vagrant"
 
-
   ###### Networking
   # Forward ports on host machine to a guest machine
   # MySQL
   config.vm.network "forwarded_port", guest: 3306, host: 3306
 
-  #  Access guest machine address through host machine address in the private address space
+  # Access guest machine address through host machine address in the private address space
   config.vm.network "private_network", ip: "192.168.33.10"
 
-  #Sync folders
+  # Sync folders
   config.vm.synced_folder "www/", "/var/www/html"
 
   ###### Provisioning
