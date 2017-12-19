@@ -3,6 +3,14 @@
 
 Vagrant.configure("2") do |config|
 
+  config.vm.box = "ubuntu/trusty64"
+
+  # Always check for box updates (default option)
+  #config.vm.box_check_update = false
+
+  # The hostname the machine should have
+  config.vm.hostname = "ubuntu-lamp-xdebug-dev"
+
   ###### SSH
   # Set SSH username - default 'vagrant'
   #config.ssh.username = "vagrant"
@@ -12,11 +20,6 @@ Vagrant.configure("2") do |config|
 
 
   ###### Networking
-  config.vm.box = "ubuntu/trusty64"
-
-  # The hostname the machine should have
-  config.vm.hostname = "ubuntu-lamp-xdebug-dev"
-
   # Forward ports on host machine to a guest machine
   # MySQL
   config.vm.network "forwarded_port", guest: 3306, host: 3306
@@ -26,9 +29,6 @@ Vagrant.configure("2") do |config|
 
   #Sync folders
   config.vm.synced_folder "www/", "/var/www/html"
-  
-  # Always check for box updates (defualt option)
-  #config.vm.box_check_update = false
 
   ###### Provisioning
   config.vm.provision "shell", path: "provision/bootstrap.sh"
