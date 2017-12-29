@@ -9,6 +9,7 @@ mysql_config_file="/etc/mysql/my.cnf"
 # Main function called at the very bottom of the file
 main() {
 	updateConfig
+	addLocales
 	apacheConfig
 	phpConfig
 	mysqlConfig
@@ -20,6 +21,21 @@ updateConfig() {
 	###### Download and Install the latest updates for the OS
 	printf "\n\n\n\n[ #### Update all the dependencies #### ]\n\n"
     sudo apt-get update && sudo apt-get upgrade
+}
+
+addLocales() {
+	###### Download and Install locales
+	printf "\n\n\n\n[ #### Download and Install locales #### ]\n\n"
+    # Check which locales are supported
+    printf "\nSupported locales\n"
+    locale -a
+    # Add locales
+    #sudo locale-gen sl_SI.UTF-8
+    # Update command
+    #sudo update-locale
+    # Check which locales are supported
+    printf "\nSupported locales\n"
+    locale -a
 }
 
 apacheConfig() {
