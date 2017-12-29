@@ -50,6 +50,10 @@ apacheConfig() {
     sudo service apache2 restart
     sudo apache2ctl configtest
     printf "\n"
+    # Enable Apache mod_rewrite or prompt that the module is already in effect
+    sudo a2enmod rewrite
+    sudo service apache2 restart
+    printf "\n"
     apache2 -v
 }
 
