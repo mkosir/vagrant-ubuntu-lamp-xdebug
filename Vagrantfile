@@ -4,11 +4,12 @@
 Vagrant.configure("2") do |config|
 
   config.vm.box = "ubuntu/trusty64"
-
+  # Set box version (default - latest version available)
+  #config.vm.box_version = "1.0.0"
   # Always check for box updates (default option)
   #config.vm.box_check_update = false
 
-  # The hostname the machine should have
+  # Hostname of the machine
   config.vm.hostname = "ubuntu-lamp-xdebug-dev"
 
   ###### SSH
@@ -29,6 +30,12 @@ Vagrant.configure("2") do |config|
   # Sync folders
   config.vm.synced_folder "www/", "/var/www/html"
 
+  ###### Provider-specific configuration
+  config.vm.provider "virtualbox" do |vb|
+    # Workaround for https://www.virtualbox.org/ticket/15705
+    vb.customize ['modifyvm', :id, '--cableconnected1', 'on']
+  end
+  
   ###### Provisioning
   config.vm.provision "shell", path: "provision/bootstrap.sh"
 end
