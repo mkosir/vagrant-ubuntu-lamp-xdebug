@@ -2,6 +2,11 @@
 
 # Variables
 php_version="7.1"
+mysql_version="5.5"
+mariadb_version="10.1"
+
+db_password='rootpass'
+
 xdebug_config_file="/etc/php/${php_version}/apache2/conf.d/20-xdebug.ini"
 mysql_config_file="/etc/mysql/my.cnf"
 
@@ -13,6 +18,7 @@ main() {
 	apacheConfig
 	phpConfig
 	mysqlConfig
+	#mariaDBConfig
 	restartServices
 	cleanUp
 }
@@ -94,7 +100,7 @@ mysqlConfig() {
     printf "\nUpdated mysql skip-external-locking in ${mysql_config_file} to #skip-external-locking. If you run multiple servers that use the same database directory (not recommended), each server must have external locking enabled\n"
 
     # Assign mysql root user access on %
-    sudo mysql -u root -prootpass --execute "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'rootpass' with GRANT OPTION; FLUSH PRIVILEGES;"
+    sudo mysql -u root -p$db_password --execute "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$db_password' with GRANT OPTION; FLUSH PRIVILEGES;"
     printf "Assigned mysql user 'root' access on all hosts."
 
     # Restart mysql service
@@ -104,9 +110,52 @@ mysqlConfig() {
     mysql --version
 }
 
+mariaDBConfig() {
+    ###### MariaDB
+    printf "\n\n\n\n[ #### Install MariaDB #### ]\n\n"
+    # Import repo key
+    sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
+
+    # Add repo for MariaDB
+    sudo add-apt-repository "deb [arch=amd64,i386] http://mirrors.accretive-networks.net/mariadb/repo/$mariadb_version/ubuntu trusty main"
+
+    # Update
+    sudo apt-get update
+
+    # Install MariaDB without password prompt
+    # Set username to 'root'
+    sudo debconf-set-selections <<< "maria-db-$mariadb_version mysql-server/root_password password $db_password"
+    sudo debconf-set-selections <<< "maria-db-$mariadb_version mysql-server/root_password_again password $db_password"
+
+    # Install MariaDB
+    # -qq implies -y --force-yes
+    sudo apt-get install -qq mariadb-server
+
+    # Make MariaDB accessible from outside world without SSH tunnel
+    # enable remote access
+    # setting the mysql bind-address to allow connections from everywhere
+    # Update mysql configs file.
+    printf "\n\n\n\n[ #### Updating mysql configs in ${mysql_config_file}.#### ]\n\n"
+    sed -i "s/bind-address.*/bind-address = 0.0.0.0/" ${mysql_config_file}
+    printf "\nUpdated mysql bind address in ${mysql_config_file} to 0.0.0.0 to allow external connections\n"
+
+    sudo sed -i "/.*skip-external-locking.*/s/^/#/g" ${mysql_config_file}
+    printf "\nUpdated mysql skip-external-locking in ${mysql_config_file} to #skip-external-locking. If you run multiple servers that use the same database directory (not recommended), each server must have external locking enabled\n"
+
+    # Assign mysql root user access on %
+    sudo mysql -u root -p$db_password --execute "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$db_password' with GRANT OPTION; FLUSH PRIVILEGES;"
+    printf "Assigned mysql user 'root' access on all hosts."
+    sleep 5
+    # Restart mysql service
+    sudo service mysql restart
+
+    printf "\n"
+    mysql --version
+}
+
 restartServices() {
     ###### Restart services
-    printf "\n\n\n\n[ #### Restart Apache, MySQL #### ]\n\n"
+    printf "\n\n\n\n[ #### Restart services #### ]\n\n"
     sudo service apache2 restart
     sudo service mysql restart
 }
