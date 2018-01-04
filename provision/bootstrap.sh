@@ -56,9 +56,16 @@ apacheConfig() {
     sudo service apache2 restart
     sudo apache2ctl configtest
     printf "\n"
+    
     # Enable Apache mod_rewrite or prompt that the module is already in effect
+    printf "\nEnable module rewrite\n"
     sudo a2enmod rewrite
     sudo service apache2 restart
+    # Replace the third occurrence of string AllowOverride None with AllowOverride All
+    printf "\nReplace string AllowOverride None with AllowOverride All\n"
+    sudo sed -i ':a;N;$!ba;s/AllowOverride None/AllowOverride All/3' /etc/apache2/apache2.conf
+    sudo service apache2 restart
+    
     printf "\n"
     apache2 -v
 }
