@@ -36,4 +36,20 @@ The web root is synced in the project directory at "www/".
 Enabled mod_rewrite.
 
 #### MySQL
-MySQL server is available at port 3306 as usual. Username: root Password: rootpass
+MySQL server is available at port 3306 as usual. Username: root Password: rootpass  
+Instead of MySQL database install MariaDB with uncommenting one line in provisioning file - bootstrap.sh:
+```
+...
+# Main function called at the very bottom of the file
+main() {
+	updateConfig
+	addLocales
+	apacheConfig
+	phpConfig
+	#mysqlConfig
+	mariaDBConfig
+	restartServices
+	cleanUp
+}
+...
+```
