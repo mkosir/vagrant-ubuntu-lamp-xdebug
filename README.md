@@ -31,8 +31,8 @@ $ vagrant ssh
 
 ### Connecting
 #### Apache
-The Apache server is available on private network IP 192.168.33.10
-The web root is synced in the project directory at "www/".
+The Apache server is available on private network IP 192.168.33.10  
+The web root is synced in the project directory at "www/".  
 Enabled mod_rewrite.
 
 #### MySQL
