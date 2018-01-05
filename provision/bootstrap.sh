@@ -76,14 +76,17 @@ phpConfig() {
     sudo apt-add-repository ppa:ondrej/php -y
     sudo apt-get update
     # Only add modules that are not already included
-    sudo apt-get install php7.1 php-xdebug -y
+    sudo apt-get install php7.1 php-xdebug php-mysql -y
+
     # Update Xdebug settings
     printf "\nUpdate Xdebug settings\n"
     xdebugConfig
     printf "\n"
     cat ${xdebug_config_file}
+
     printf "\n[ #### Installed PHP modules (Ubuntu packages) #### ]\n"
     php -m
+
     printf "\n"
     php -v
 }
