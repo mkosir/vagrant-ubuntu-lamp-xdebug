@@ -25,7 +25,7 @@ Vagrant.configure("2") do |config|
 
   ###### Networking
   # Access guest machine address through host machine address in the private address space
-  config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "private_network", ip: server_ip
 
   # Forward ports on host machine to a guest machine
   # MySQL
