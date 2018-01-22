@@ -1,5 +1,5 @@
 # Vagrant Box - Ubuntu-Lamp-Xdebug
-Instead of LAMP, XAMPP, MAMP, etc. set up web server up and running in minutes, plus you are not limited to just one web root folder.
+Instead of L|X|M-AMP set up web server up and running in minutes, and you are not limited to just one web root folder.
 
 LAMP stack running on Ubuntu using PHP 7 and Xdebug. Keeping it lightweight with minimum dependencies installed.
 
