@@ -18,6 +18,7 @@ main() {
 	apacheConfig
 	phpConfig
 	composerConfig
+	nodejsConfig
 	mysqlConfig
 	#mariaDBConfig
 	restartServices
@@ -100,6 +101,18 @@ composerConfig() {
 
     printf "\n"
     composer --version
+}
+
+nodejsConfig() {
+    ###### Node.js & npm
+    printf "\n\n\n\n[ #### Install Node.js & npm #### ]\n\n"
+    curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    sudo apt-get install -y nodejs
+
+    printf "\n"
+    node -v
+    printf "\n"
+    npm -v
 }
 
 mysqlConfig() {
