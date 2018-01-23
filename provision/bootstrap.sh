@@ -17,6 +17,7 @@ main() {
 	addLocales
 	apacheConfig
 	phpConfig
+	composerConfig
 	mysqlConfig
 	#mariaDBConfig
 	restartServices
