@@ -49,8 +49,8 @@ main() {
 	phpConfig
 	#composerConfig
 	#nodejsConfig
-	#mysqlConfig
-	mariaDBConfig
+	mysqlConfig
+	#mariaDBConfig
 	restartServices
 	cleanUp
 }
