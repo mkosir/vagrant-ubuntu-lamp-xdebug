@@ -48,6 +48,7 @@ main() {
 	apacheConfig
 	phpConfig
 	composerConfig
+	nodejsConfig
 	#mysqlConfig
 	mariaDBConfig
 	restartServices
