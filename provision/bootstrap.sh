@@ -7,6 +7,7 @@ mariadb_version="10.1"
 
 db_password='rootpass'
 
+php_config_file="/etc/php/${php_version}/apache2/php.ini"
 xdebug_config_file="/etc/php/${php_version}/apache2/conf.d/20-xdebug.ini"
 mysql_config_file="/etc/mysql/my.cnf"
 
