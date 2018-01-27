@@ -170,7 +170,7 @@ mariaDBConfig() {
     # enable remote access
     # setting the mysql bind-address to allow connections from everywhere
     # Update mysql configs file.
-    printf "\n\n\n\n[ #### Updating mysql configs in ${mysql_config_file}.#### ]\n\n"
+    printf "\n\n\n\n[ #### Updating mysql configs in ${mysql_config_file} #### ]\n\n"
     sed -i "s/bind-address.*/bind-address = 0.0.0.0/" ${mysql_config_file}
     printf "\nUpdated mysql bind address in ${mysql_config_file} to 0.0.0.0 to allow external connections\n"
 
