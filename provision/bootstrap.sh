@@ -87,7 +87,7 @@ phpConfig() {
     printf "\n"
     cat ${xdebug_config_file}
 
-    printf "\n[ #### Installed PHP modules (Ubuntu packages) #### ]\n"
+    printf "\n[ #### Installed PHP modules #### ]\n"
     php -m
 
     printf "\n"
