@@ -36,6 +36,9 @@ The Apache server is available on private network IP 192.168.33.10
 The web root is synced in the project directory at "www/".  
 Enabled mod_rewrite.
 
+#### PHP
+Modules Xdebug and PDO are enabled and configured.
+
 #### MySQL
 MySQL server is available at port 3306 as usual. Username: root Password: rootpass  
 Instead of MySQL database install MariaDB with uncommenting one line in provisioning file - bootstrap.sh:
