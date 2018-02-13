@@ -10,6 +10,7 @@ LAMP stack running on Ubuntu using PHP 7 and Xdebug. Keeping it lightweight with
 * Xdebug 2.5.5
 * MySQL 5.5.58 (or MariaDB 10.1)
 * Composer & npm (optional)
+Releases - https://github.com/markokosir/vagrant-ubuntu-lamp-xdebug/releases
 
 #### Prerequisite
 * Vagrant <http://www.vagrantup.com>
