@@ -4,11 +4,11 @@ Instead of L|X|M-AMP set up web server up and running in minutes, and you are no
 LAMP stack running on Ubuntu using PHP 7 and Xdebug. Keeping it lightweight with minimum dependencies installed.
 
 #### Stack
-* Ubuntu 14.04 64-bit
-* Apache 2.4.7
-* PHP 7.1.12
-* Xdebug 2.5.5
-* MySQL 5.5.58 (or MariaDB 10.1)
+* Ubuntu 16.04 64-bit
+* Apache 2.4.18
+* PHP 7.2.2
+* Xdebug 2.6.0
+* MariaDB 10.2.13 (optional MySQL 5.5)
 * Composer & npm (optional)
 
 Available releases - https://github.com/markokosir/vagrant-ubuntu-lamp-xdebug/releases
@@ -38,13 +38,11 @@ The web root is synced in the project directory at "www/".
 Enabled mod_rewrite.
 
 #### PHP
-Enabled and configured PHP extensions:
-* Xdebug
-* PDO
+Enabled and configured additional PHP extensions: xdebug, PDO, xml, mbstring, zip.
 
-#### MySQL
-MySQL server is available at port 3306 as usual. Username: root Password: rootpass  
-Instead of MySQL database install MariaDB with uncommenting one line in provisioning file - bootstrap.sh:
+#### MariaDB
+MariaDB server is available at port 3306 as usual. Username: root Password: rootpass  
+Instead of MariaDB database install MySQL with uncommenting one line in provisioning file - bootstrap.sh:
 ```
 ...
 # Main function called at the very bottom of the file
@@ -55,8 +53,8 @@ main() {
 	phpConfig
 	#composerConfig
 	#nodejsConfig
-	mysqlConfig
-	#mariaDBConfig
+	#mysqlConfig
+	mariaDBConfig
 	restartServices
 	cleanUp
 }
