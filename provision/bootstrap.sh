@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Variables
-php_version="7.1"
+php_version="7.2"
 mysql_version="5.5"
-mariadb_version="10.1"
+mariadb_version="10.2"
 
 db_password='rootpass'
 
@@ -20,8 +20,8 @@ main() {
 	phpConfig
 	#composerConfig
 	#nodejsConfig
-	mysqlConfig
-	#mariaDBConfig
+	#mysqlConfig
+	mariaDBConfig
 	restartServices
 	cleanUp
 }
@@ -79,7 +79,8 @@ phpConfig() {
     sudo apt-add-repository ppa:ondrej/php -y
     sudo apt-get update
     # Only add modules that are not already included
-    sudo apt-get install php${php_version} php${php_version}-mysql php-xdebug -y
+    sudo apt-get install -y php${php_version} php${php_version}-mysql php${php_version}-xml \
+    php${php_version}-mbstring zip unzip php${php_version}-zip php-xdebug
 
     # Update Xdebug settings
     printf "\nUpdate Xdebug settings\n"
@@ -148,11 +149,12 @@ mysqlConfig() {
 mariaDBConfig() {
     ###### MariaDB
     printf "\n\n\n\n[ #### Install MariaDB #### ]\n\n"
+    sudo apt-get install software-properties-common
     # Import repo key
-    sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
+    sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
 
     # Add repo for MariaDB
-    sudo add-apt-repository "deb [arch=amd64,i386] http://mirrors.accretive-networks.net/mariadb/repo/$mariadb_version/ubuntu trusty main"
+    sudo add-apt-repository "deb [arch=amd64,i386,ppc64el] http://ftp.heanet.ie/mirrors/mariadb/repo/$mariadb_version/ubuntu xenial main"
 
     # Update
     sudo apt-get update

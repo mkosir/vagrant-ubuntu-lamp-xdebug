@@ -9,7 +9,7 @@ server_ip = "192.168.33.10"
 
 Vagrant.configure("2") do |config|
   ###### Vagrant box configuration
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "ubuntu/xenial64"
   # Set box version
   #config.vm.box_version = "1.0.0"
   # Always check for box updates (default option)
@@ -40,6 +40,9 @@ Vagrant.configure("2") do |config|
 
     # Workaround for https://www.virtualbox.org/ticket/15705
     vb.customize ['modifyvm', :id, '--cableconnected1', 'on']
+
+    # Workaround for basebox ubuntu/xenial64
+    vb.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
   end
   
   ###### Provisioning
