@@ -1,6 +1,4 @@
 # Vagrant Box - Ubuntu-Lamp-Xdebug
-Instead of L|X|M-AMP set up web server up and running in minutes, and you are not limited to just one web root folder.
-
 LAMP stack running on Ubuntu using PHP 7 and Xdebug. Keeping it lightweight with minimum dependencies installed.
 
 #### Stack
@@ -17,7 +15,7 @@ Available releases - https://github.com/markokosir/vagrant-ubuntu-lamp-xdebug/re
 * Vagrant <http://www.vagrantup.com>
 * VirtualBox <http://www.virtualbox.org>
 
-Instead of downloading project from github, you can just download vagrant box with current provisioning and create vagrant file by yourself. Vagrant box is available at - [marko424/ubuntu-lamp-xdebug](https://app.vagrantup.com/marko424/boxes/ubuntu-lamp-xdebug)
+Instead of downloading project from github, just download vagrant box with current provisioning and create vagrant file by yourself. Vagrant box - [marko424/ubuntu-lamp-xdebug](https://app.vagrantup.com/marko424/boxes/ubuntu-lamp-xdebug)
 
 ## Vagrant
 ### Vagrant box up and running
