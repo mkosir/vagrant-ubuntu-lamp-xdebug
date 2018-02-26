@@ -1,4 +1,4 @@
-# Vagrant Box - Ubuntu-Lamp-Xdebug
+## Vagrant Box - Ubuntu-Lamp-Xdebug
 LAMP stack running on Ubuntu using PHP 7 and Xdebug. Keeping it lightweight with minimum dependencies installed.
 
 #### Stack
